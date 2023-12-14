@@ -47,16 +47,15 @@ export const HomePage = () => {
                     e.preventDefault();
                     addNote(e.target.title.value, e.target.content.value);
                 }}>
-                    <h3>Add Note</h3>
-                    <label style={{color:'white', margin:'5px'}}>
-                        <h1>Title:</h1>
-                        <input style={{height:'30px'}} type="text" name="title" required />
+                    <label style={{color:'white', margin:'5px', padding:'10px', fontSize:'35px'}}>
+                        Title:
+                        <input style={{height:'30px', margin:'15px', height:'45px'}} type="text" name="title" required />
                     </label>
-                    <label style={{color:'white', margin:'10px'}}>
-                        <h1>Content:</h1>
-                        <textarea name="content" required />
+                    <label style={{color:'white', margin:'10px', fontSize:'35px'}}>
+                        Content:
+                        <input style={{padding:'20px', marginTop:'30px', height:'5px'}} name="content" required />
                     </label>
-                    <button style={{height:'20px', width:'10%'}} type="submit">Add</button>
+                    <button style={{height:'40px', borderRadius:'5px', cursor:'pointer', width:'10%', backgroundColor:'#feb2b2'}} type="submit">Add</button>
                 </form>
             </div>
         </div>
