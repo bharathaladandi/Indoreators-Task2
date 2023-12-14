@@ -16,29 +16,14 @@ var db = mysql.createConnection({
     database: 'node_db'
 });
 
-db.connect(function (err) {
-    if (err) throw err
-    console.log('You are now connected with mysql database...')
-});
 
-app.post('/note', (req, res) => {
-    const { title, content } = req.body;
-    const insertQuery = 'node_db';
-    db.query(insertQuery, [title, content], (err, result) => {
-        if (err) {
-            console.error('Error while adding', err);
-            res.status(500).send('Error while adding');
-        } else {
-            res.status(200).send('Note added successfully');
-        }
-    });
-});
+
+
 
 app.get('/getNotes', (req, res) => {
-    const selectQuery = 'node_db';
-    db.query(selectQuery, (err, result) => {
+    db.query('node_db', (err, result) => {
         if (err) {
-            console.error('Error while fetching notes:', err);
+            console.error(err);
             res.status(500).send('Error while fetching notes');
         } else {
             res.status(200).json(result);
@@ -46,7 +31,21 @@ app.get('/getNotes', (req, res) => {
     });
 });
 
-app.delete('/deleteNote/:id', (req, res) => {
+
+app.post('/notes', (req, res) => {
+    const { title, content } = req.body;
+    const insertQuery = 'node_db';
+    db.query(insertQuery, [title, content], (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error while adding');
+        } else {
+            res.status(200).send('Note added successfully');
+        }
+    });
+});
+
+app.delete('/notes/:id', (req, res) => {
     const noteId = req.params.id;
     const deleteQuery = node_db
     db.query(deleteQuery, [noteId], (err, result) => {
